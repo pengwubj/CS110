@@ -1,0 +1,10 @@
+# Ignore project parser specific compilation outputs, which includes some .hh and .cc files
+*.d
+*.o
+*.a
+
+scanner.cc
+parser.cc
+parser.h
+parser.output
+stsh-parse-test

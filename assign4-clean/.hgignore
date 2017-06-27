@@ -1,0 +1,30 @@
+# default .hgignore for student Mercurial repos 
+# mchang & jzelenski tweaked Februrary 2017
+
+syntax: glob
+
+# patterns to ignore object files, vim swapfiles, emacs backup/tmp files
+*.a
+*.d
+*.o
+.*.sw?
+*~
+.\#*
+\#*\#
+
+
+# list executables and other untracked files specific to project here
+conduit
+fpe
+int
+spin
+split
+stsh
+tstp
+stsh-parser/stsh-parse-test
+
+# Ignore generated scanner/parser
+stsh-parser/parser.cc
+stsh-parser/parser.h
+stsh-parser/parser.output
+stsh-parser/scanner.cc

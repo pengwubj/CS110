@@ -1,0 +1,22 @@
+# default .hgignore for student Mercurial repos 
+# mchang & jzelenski tweaked Februrary 2017
+
+syntax: glob
+
+# patterns to ignore object files, vim swapfiles, emacs backup/tmp files
+*.a
+*.d
+*.o
+.*.sw?
+*~
+.\#*
+\#*\#
+
+
+# list executables and other untracked files specific to project here
+*-test
+*-test?
+farm
+trace
+
+.trace_signatures.txt

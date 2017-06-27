@@ -1,0 +1,35 @@
+mr.o: mr.cc mapreduce-server.h mapreduce-server-exception.h
+mrm.o: mrm.cc mapreduce-mapper.h mapreduce-worker.h
+mrr.o: mrr.cc mapreduce-reducer.h mapreduce-worker.h
+word-count-mapper.o: word-count-mapper.cc mr-random.h
+word-count-reducer.o: word-count-reducer.cc mr-random.h
+mapreduce-server.o: mapreduce-server.cc mapreduce-server.h \
+ mapreduce-server-exception.h thread-pool.h \
+ /afs/ir/class/cs110/include/socket++/sockstream.h mr-nodes.h \
+ mr-messages.h mr-utils.h mr-env.h mr-hash.h mr-names.h \
+ /afs/ir/class/cs110/local/include/string-utils.h server-socket.h \
+ /afs/ir/class/cs110/local/include/ostreamlock.h
+mapreduce-worker.o: mapreduce-worker.cc mapreduce-worker.h mr-messages.h \
+ /afs/ir/class/cs110/local/include/string-utils.h client-socket.h \
+ /afs/ir/class/cs110/include/socket++/sockstream.h
+mapreduce-mapper.o: mapreduce-mapper.cc mapreduce-mapper.h \
+ mapreduce-worker.h mr-names.h \
+ /afs/ir/class/cs110/local/include/string-utils.h \
+ /afs/ir/class/cs110/local/include/ostreamlock.h
+mapreduce-reducer.o: mapreduce-reducer.cc mapreduce-reducer.h \
+ mapreduce-worker.h /afs/ir/class/cs110/local/include/ostreamlock.h \
+ mr-names.h
+client-socket.o: client-socket.cc client-socket.h
+server-socket.o: server-socket.cc server-socket.h
+mr-nodes.o: mr-nodes.cc mr-nodes.h \
+ /afs/ir/class/cs110/local/include/ostreamlock.h \
+ /afs/ir/class/cs110/local/include/string-utils.h
+mr-messages.o: mr-messages.cc \
+ /afs/ir/class/cs110/local/include/string-utils.h mr-messages.h mr-env.h \
+ mapreduce-server-exception.h
+mr-env.o: mr-env.cc mr-env.h mapreduce-server-exception.h
+mr-utils.o: mr-utils.cc mr-utils.h mapreduce-server-exception.h
+mr-random.o: mr-random.cc mr-random.h \
+ /afs/ir/class/cs110/local/include/random-generator.h
+mr-names.o: mr-names.cc mr-names.h \
+ /afs/ir/class/cs110/local/include/string-utils.h

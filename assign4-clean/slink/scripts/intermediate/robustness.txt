@@ -1,0 +1,21 @@
+# Trace: error-checking
+# ---------------------
+# Ensures a reasonable amount of error checking at the command line.
+/bin/echo stsh> ./nonexistent
+./nonexistent
+/bin/echo -e stsh> ./spin 10 \046
+./spin 10 &
+/bin/echo -e stsh> fg
+fg
+/bin/echo -e stsh> bg
+bg
+/bin/echo -e stsh> fg a
+fg a
+/bin/echo -e stsh> bg a
+bg a
+/bin/echo -e stsh> fg 1
+fg 1
+/bin/echo -e stsh> bg 1
+bg 1
+/bin/echo -e stsh> fg 2
+fg 2

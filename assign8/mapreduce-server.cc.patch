@@ -1,0 +1,50 @@
+diff -r 78da6d01d483 mapreduce-server.cc
+--- a/mapreduce-server.cc	Thu Mar 09 11:03:51 2017 -0800
++++ b/mapreduce-server.cc	Sun Mar 19 14:42:58 2017 -0700
+@@ -59,8 +59,8 @@
+  * Method: run
+  * -----------
+  * Presents the high-level scripts of what the server must accomplish in order to ensure that
+- * an entire MapReduce job executes to completion.  See the documentation for each of the
+- * methods called by run to gain a better sense of what's accomplished here.
++ * an entire MapReduce job runs to completion.  See the documentation for each of the
++ * methods called by run to gain a better sense of how everything works.
+  */
+ void MapReduceServer::run() throw() {
+   spawnMappers();
+@@ -142,11 +142,7 @@
+  * ---------------------------------
+  * Uses the username and hostname to compute a default server
+  * port number (to be used in the event one isn't supplied
+- * on the command line).  Care was taken to make sure the
+- * default port computed here is different than that used
+- * for the http-proxy assignment, just so both "mr" and "http-proxy"
+- * can easily be run at the same time without providing override port
+- * numbers.
++ * on the command line).
+  */
+ static const unsigned short kLowestOpenPortNumber = 1024;
+ unsigned short MapReduceServer::computeDefaultPortForUser() const throw () {
+@@ -178,6 +174,12 @@
+   }
+ }
+ 
++/**
++ * Method: confirmExecutablesAreExecutable
++ * ---------------------------------------
++ * Does the best job it can to confirm that the supplied executable names
++ * identify executables that can be run by the user driving the map reduce job.
++ */
+ void MapReduceServer::confirmExecutablesAreExecutable() const throw (MapReduceServerException) {
+   struct executable {
+     string executableName;
+@@ -397,9 +399,6 @@
+  * Manages the incoming message from some worker running on the supplied IP address and,
+  * in some cases, responds to the same worker with some form of an acknowledgement that the message was
+  * received.
+- *
+- * Note that this implementation, as it's given to you, is incomplete and needs to be updated
+- * just slightly as part of Task 1.
+  */
+ void MapReduceServer::handleRequest(int clientSocket, const string& clientIPAddress) throw() {
+   if (verbose) 
