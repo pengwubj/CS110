@@ -1,0 +1,4 @@
+1. 对于一个进程而言，signal handler只有一个起作用，就是最后一个设置的那个。
+2. child process一结束，马上就会发送SIGCHLD，让signal handler处理
+3. signal handler在处理的过程中，会block掉SIGCHLD，直到处理结束
+4. child process和parent process各自拥有signal handler，不过大多数情况下，都是child在fork的时候copy了parent的。
